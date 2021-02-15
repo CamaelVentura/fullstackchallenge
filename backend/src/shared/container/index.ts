@@ -1,9 +1,9 @@
 import { container } from 'tsyringe';
 
-import ICarsRepository from '../../modules/cars/repositories/ICarsRepository';
-import CarsRepository from '../../modules/cars/infra/typeorm/repositories/CarsRepository';
+import IVehiclesRepository from '../../modules/vehicles/repositories/IVehiclesRepository';
+import VehiclesRepository from '../../modules/vehicles/infra/typeorm/repositories/VehiclesRepository';
 
-container.registerSingleton<ICarsRepository>(
-  'CarsRepository',
-  CarsRepository,
+container.registerSingleton<IVehiclesRepository>(
+  'VehiclesRepository',
+  VehiclesRepository,
 );

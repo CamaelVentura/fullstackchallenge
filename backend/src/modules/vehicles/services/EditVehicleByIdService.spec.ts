@@ -2,23 +2,23 @@ import 'reflect-metadata';
 
 import AppError from '../../../shared/errors/AppError';
 
-import EditCarByIdService from './EditCarByIdService';
-import FakeCarsRepository from '../repositories/fakes/FakeCarsRepository';
+import EditVehicleByIdService from './EditVehicleByIdService';
+import FakeVehiclesRepository from '../repositories/fakes/FakeVehiclesRepository';
 
-let fakeCarsRepository: FakeCarsRepository;
-let editCarById: EditCarByIdService;
+let fakeVehiclesRepository: FakeVehiclesRepository;
+let editVehicleById: EditVehicleByIdService;
 
-describe ('EditCar', () => {
+describe ('EditVehicle', () => {
   beforeEach(() => {
-    fakeCarsRepository = new FakeCarsRepository();
+    fakeVehiclesRepository = new FakeVehiclesRepository();
 
-    editCarById = new EditCarByIdService(
-      fakeCarsRepository,
+    editVehicleById = new EditVehicleByIdService(
+      fakeVehiclesRepository,
     );
   });
 
-  it('Should be able to edit a existent car', async () => {    
-    const newCar = await fakeCarsRepository.create({
+  it('Should be able to edit a existent vehicle', async () => {    
+    const newVehicle = await fakeVehiclesRepository.create({
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model One',
@@ -26,8 +26,8 @@ describe ('EditCar', () => {
       type: 'carro',
     });
 
-    const editedCar = await editCarById.execute({
-      id: newCar.id,
+    const editedVehicle = await editVehicleById.execute({
+      id: newVehicle.id,
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model Two',
@@ -35,7 +35,7 @@ describe ('EditCar', () => {
       type: 'carro',
     });
 
-    expect(editedCar).toEqual(
+    expect(editedVehicle).toEqual(
       expect.objectContaining({
         license_plate: 'AAA0000',
         brand: 'Brand',
@@ -45,13 +45,13 @@ describe ('EditCar', () => {
       }),
     );
 
-    expect(editedCar).toHaveProperty('id');
+    expect(editedVehicle).toHaveProperty('id');
 
-    expect(await fakeCarsRepository.findById(newCar.id)).toEqual(editedCar);
+    expect(await fakeVehiclesRepository.findById(newVehicle.id)).toEqual(editedVehicle);
   });
 
-  it('Should be able to edit a existent car to another license plate', async () => {    
-    const newCar = await fakeCarsRepository.create({
+  it('Should be able to edit a existent vehicle to another license plate', async () => {    
+    const newVehicle = await fakeVehiclesRepository.create({
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
@@ -59,8 +59,8 @@ describe ('EditCar', () => {
       type: 'carro',
     });
 
-    const editedCar = await editCarById.execute({
-      id: newCar.id,
+    const editedVehicle = await editVehicleById.execute({
+      id: newVehicle.id,
       license_plate: 'BBB0000',
       brand: 'Brand',
       model: 'Model',
@@ -68,7 +68,7 @@ describe ('EditCar', () => {
       type: 'carro',
     });
 
-    expect(editedCar).toEqual(
+    expect(editedVehicle).toEqual(
       expect.objectContaining({
         license_plate: 'BBB0000',
         brand: 'Brand',
@@ -78,13 +78,13 @@ describe ('EditCar', () => {
       }),
     );
 
-    expect(editedCar).toHaveProperty('id');
+    expect(editedVehicle).toHaveProperty('id');
 
-    expect(await fakeCarsRepository.findById(newCar.id)).toEqual(editedCar);
+    expect(await fakeVehiclesRepository.findById(newVehicle.id)).toEqual(editedVehicle);
   });
 
-  it('Should not be able to edit a car without a valid id', async () => {
-    await expect(editCarById.execute({
+  it('Should not be able to edit a vehicle without a valid id', async () => {
+    await expect(editVehicleById.execute({
       id: 'invalidID',
       license_plate: 'AAA0000',
       brand: 'Brand',
@@ -94,8 +94,8 @@ describe ('EditCar', () => {
     })).rejects.toBeInstanceOf(AppError);
   });
 
-  it('Should not be able to edit a car with a license plate already been used', async () => {
-    await fakeCarsRepository.create({
+  it('Should not be able to edit a vehicle with a license plate already been used', async () => {
+    await fakeVehiclesRepository.create({
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
@@ -103,7 +103,7 @@ describe ('EditCar', () => {
       type: 'carro',
     });
 
-    const car = await fakeCarsRepository.create({
+    const vehicle = await fakeVehiclesRepository.create({
       license_plate: 'BBB0000',
       brand: 'Brand',
       model: 'Model',
@@ -111,8 +111,8 @@ describe ('EditCar', () => {
       type: 'carro',
     });
 
-    await expect(editCarById.execute({
-      id: car.id,
+    await expect(editVehicleById.execute({
+      id: vehicle.id,
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',

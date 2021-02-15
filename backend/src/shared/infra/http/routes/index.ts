@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import carsRouter from '../../../../modules/cars/infra/http/routes/cars.routes';
+import vehiclesRouter from '../../../../modules/vehicles/infra/http/routes/vehicles.routes';
 
 const routes = Router();
 
-routes.use('/cars', carsRouter);
+routes.use('/vehicles', vehiclesRouter);
 
 export default routes;

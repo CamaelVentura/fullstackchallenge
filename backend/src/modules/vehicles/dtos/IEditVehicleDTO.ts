@@ -1,4 +1,4 @@
-export default interface ICreateCarDTO {
+export default interface ICreateVehicleDTO {
   id: string;
   license_plate: string;
   brand: string;
