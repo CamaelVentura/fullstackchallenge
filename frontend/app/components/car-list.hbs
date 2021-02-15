@@ -1,0 +1,40 @@
+<div class="start mb-20" {{did-insert (fn this.listVehicles @cars)}}>
+  <h1>{{@title}}</h1>
+  <div class="search">
+  <input type="text" placeholder="Filtrar" id="filtro" onkeyup={{action 'filter' value="target.value"}} />
+    {{ fa-icon "search" tagName="span" class="icon"}}
+  <button 
+    class="ok" 
+    type="button"
+    {{on 'click' this.goToNewCar}}
+  >
+  {{ fa-icon "plus" tagName="span"}} Novo veículo
+  </button>
+  </div>
+</div>
+
+<div class="vehicles">
+  <table>
+    <tr>
+      <th><b>Placa</b></th>
+      <th class="dpl-nn"><b>Marca</b></th>
+      <th class="dpl-nn"><b>Modelo e Versão</b></th>
+      <th class="dpl-nn"><b>Ano</b></th>
+      <th><b>Ações</b></th>      
+    </tr>
+    {{#each this.filteredVehicles as |vehicle|}}  
+      <tr class="tableData">
+        <td>{{vehicle.license_plate}}</td>
+        <td class="dpl-nn">{{vehicle.brand}}</td>
+        <td class="dpl-nn">{{vehicle.model}}</td>
+        <td class="dpl-nn">{{vehicle.year}}</td>
+        <td>
+          <span class="actions">
+          <span title="Clique para editar" {{on 'click' (fn this.goToEditCar vehicle)}} style="color: green;">{{ fa-icon "edit"}}</span>
+          <span title="Clique para excluir" {{on 'click' (fn this.deleteCar vehicle)}} style="color: red;">{{ fa-icon "trash"}}</span>
+          </span>
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+</div>

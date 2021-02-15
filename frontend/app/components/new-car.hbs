@@ -1,0 +1,69 @@
+<div class="start">
+  <h1>{{@title}}</h1>
+</div>
+
+<div class="form">
+  <form {{action 'submitVehicle' on="submit"}}>
+    <div class="row">
+      <div class="col-25">
+        <label>Placa: </label>
+      </div>
+      <div class="col-75">
+        {{input type="text" value=licensePlate placeholder="Digite a placa" id="license_plate"}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>Tipo: </label>
+      </div>
+      <div class="col-75">
+        <select id="type" onchange={{action "loadData" value="target"}} {{did-insert this.loadData value="target"}}>
+          {{#each @types as |type|}}
+          <option value={{type.codigo}}>{{ type.nome }}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>Marca: </label>
+      </div>
+      <div class="col-75">
+        <select id="brand" onchange={{action "loadData" value="target"}}>
+          {{#each this.brands as |brand|}}
+          <option value={{brand.codigo}}>{{ brand.nome }}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>Modelo e Versão: </label>
+      </div>
+      <div class="col-75">
+        <select id="model" onchange={{action "loadData" value="target"}}>
+          {{#each this.models as |model|}}
+          <option value={{model.codigo}}>{{ model.nome }}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>Ano e Combustão: </label>
+      </div>
+      <div class="col-75">
+        <select id="year">
+          {{#each this.years as |year|}}
+          <option value={{year.codigo}}>{{ year.nome }}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="formButtons">
+      <button class="cancel" type="button" onclick={{this.returnPage}}>{{ fa-icon "arrow-left" tagName="span" }}Voltar</button>
+      <button class="ok" type="submit">{{ fa-icon "check" tagName="span" }}Enviar</button>
+    </div>
+  </form>
+  <br >
+</div>

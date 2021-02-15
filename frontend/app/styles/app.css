@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F0F2F5 ;
+  -webkit-font-smoothing: antialiased
+}
+
+body, input, button {
+  font: 16px 'Noto Sans JP', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  background-color: #ddd;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+#content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#content h1{
+  margin: 30px 0px;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vehicles {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+}
+
+.vehicles table {
+  width: 100%;
+  border-radius: 8px;
+  background-color: #34B9DB;
+
+  border-color: 1px solid black;
+  border-collapse: collapse;
+}
+
+.vehicles th {
+  padding: 10px 0;
+  border-bottom: 1px solid #777;
+  color: #fff;
+}
+
+.vehicles th + th {
+  padding: 10px 0;
+  border-left: 1px solid #777;
+}
+
+.vehicles .tableData {
+  background-color: #F0F2F5;
+  border-bottom: 0.5px solid #ddd;
+  border-top: 0.5px solid #ddd;
+}
+.vehicles .tableData:nth-child(odd) {
+  background-color: rgb(225, 225, 225);
+}
+
+.vehicles .tableData td {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+.vehicles .tableData td + td {
+  border-left: 1px solid #ddd;
+}
+
+.vehicles .tableData:hover td{
+  border-top: 1px solid #555 !important;
+  border-bottom: 1px solid #555 !important;
+}
+
+.vehicles span {
+  cursor: pointer;
+}
+
+.ok {
+  background-color: #81d381;
+  border: #77dd77;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.ok span{
+  color: #fff;
+  margin-right: 5px;
+}
+
+.cancel {
+  background-color: #E84630;
+  border: #E84630;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.cancel span{
+  color: #fff;
+  margin-right: 5px;
+}
+
+.form form{
+  align-items: center;
+  justify-content: space-between;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.search input[type=text] {
+  width: 70%;
+}
+
+.search .icon{
+  margin-left: -5%;
+  margin-right: 5%;
+}
+
+.formButtons {
+  margin-top: 10px;
+  float: right;
+}
+
+.formButtons button + button {
+  margin-left: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.actions span + span {
+  padding-left: 10%;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 160%;
+    margin-bottom: 0 !important;
+  }
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .search input[type=text] {
+    width: 100%;
+  }
+  .start {
+    display: flex;
+    flex-direction: column;
+  }
+  .start h1, input[type=text], button {
+    width: 100%;
+  }
+  .start button {
+    margin: 3px auto;
+  }
+
+  .search .icon{
+    display: none;
+    visibility: hidden;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .formButtons {
+    margin-top: 10px;
+    width: 100%;
+    display: inline-block;
+  }
+  .formButtons button + button {
+    margin-top: 8px;
+    margin-left: 0px;
+  }
+
+  .mb-20 h1 {
+    margin-bottom: 20px !important;
+  }
+
+  .dpl-nn {
+    display: none;
+  }
+
+  .actions {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .actions span + span {
+    padding-left: 20%;
+  }
+}
+
+
+
+
+
+.type {
+  font-size: 115%;
+  font-weight: bold;
+}
