@@ -1,19 +1,19 @@
 import { Response, Request } from 'express';
 import { container } from 'tsyringe';
 
-import CreateCarService from '../../../services/CreateCarService';
-import DeleteCarByIdService from '../../../services/DeleteCarByIdService';
-import EditCarByIdService from '../../../services/EditCarByIdService';
-import ListCarByIdService from '../../../services/ListCarByIdService';
-import ListCarsService from '../../../services/ListCarsService';
+import CreateVehicleService from '../../../services/CreateVehicleService';
+import DeleteVehicleByIdService from '../../../services/DeleteVehicleByIdService';
+import EditVehicleByIdService from '../../../services/EditVehicleByIdService';
+import ListVehicleByIdService from '../../../services/ListVehicleByIdService';
+import ListVehiclesService from '../../../services/ListVehiclesService';
 
 export default class CarsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { license_plate, brand, model, year, type } = request.body;
     
-    const createCar = container.resolve(CreateCarService);
+    const createVehicle = container.resolve(CreateVehicleService);
 
-    const car = await createCar.execute({
+    const vehicle = await createVehicle.execute({
       license_plate,
       brand,
       model,
@@ -21,33 +21,33 @@ export default class CarsController {
       type,
     });
 
-    return response.json(car);
+    return response.json(vehicle);
   }
 
   public async index(request: Request, response: Response): Promise<Response>{
-    const listCars = container.resolve(ListCarsService);
+    const listVehicles = container.resolve(ListVehiclesService);
 
-    const cars = await listCars.execute();
+    const vehicles = await listVehicles.execute();
 
-    return response.json(cars);
+    return response.json(vehicles);
   }
 
   public async show(request: Request, response: Response): Promise<Response>{
     const { id } = request.params;
 
-    const findCar = container.resolve(ListCarByIdService);
+    const findVehicle = container.resolve(ListVehicleByIdService);
 
-    const car = await findCar.execute({id});
+    const vehicle = await findVehicle.execute({id});
 
-    return response.json(car);
+    return response.json(vehicle);
   }
 
   public async delete(request: Request, response: Response): Promise<Response>{
     const { id } = request.params;
 
-    const deleteCar = container.resolve(DeleteCarByIdService);
+    const deleteVehicle = container.resolve(DeleteVehicleByIdService);
 
-    await deleteCar.execute({id});
+    await deleteVehicle.execute({id});
 
     return response.send();
   }
@@ -56,9 +56,9 @@ export default class CarsController {
     const { id } = request.params;
     const { license_plate, brand, model, year, type } = request.body;
 
-    const editCarById = container.resolve(EditCarByIdService);
+    const editVehicleById = container.resolve(EditVehicleByIdService);
 
-    const car = await editCarById.execute({
+    const vehicle = await editVehicleById.execute({
       id,
       license_plate,
       brand,
@@ -67,6 +67,6 @@ export default class CarsController {
       type,
     });
 
-    return response.json(car);
+    return response.json(vehicle);
   }
 }
