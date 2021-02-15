@@ -22,8 +22,8 @@ describe ('DeleteCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     await deleteCarById.execute({id: car.id});
@@ -33,8 +33,8 @@ describe ('DeleteCar', () => {
         license_plate: 'AAA0000',
         brand: 'Brand',
         model: 'Model',
-        version: 'Version',
-        year: 1234,
+        year: '1234',
+        type: 'carro',
       }),
     );
 

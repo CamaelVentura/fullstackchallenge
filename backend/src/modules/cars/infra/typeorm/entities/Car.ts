@@ -15,10 +15,10 @@ class Car {
   model!: string;
 
   @Column('varchar')
-  version!: string; 
+  year!: string;
 
-  @Column('int')
-  year!: number;
+  @Column('varchar')
+  type!: number;
 
 	@CreateDateColumn()
 	created_at!: Date;	

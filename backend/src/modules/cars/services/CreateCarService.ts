@@ -9,8 +9,8 @@ interface IRequest {
   license_plate: string;
   brand: string;
   model: string;
-  version: string; 
-  year: number;
+  year: string;
+  type: string;
 }
 
 @injectable()
@@ -20,7 +20,7 @@ class CreateCarService {
     private carsRepository: ICarsRepository,
   ) {}
 
-  public async execute({license_plate, brand, model, version, year}: IRequest): Promise<Car>{
+  public async execute({license_plate, brand, model, year, type}: IRequest): Promise<Car>{
     const findCar = await this.carsRepository.findByLicensePlate(license_plate);
 
     if(findCar){
@@ -31,8 +31,8 @@ class CreateCarService {
       license_plate,
       brand,
       model,
-      version,
       year,
+      type,
     });
 
     return car;

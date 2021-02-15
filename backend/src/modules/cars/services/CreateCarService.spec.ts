@@ -22,8 +22,8 @@ describe ('CreateCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     expect(car).toEqual(
@@ -31,8 +31,8 @@ describe ('CreateCar', () => {
         license_plate: 'AAA0000',
         brand: 'Brand',
         model: 'Model',
-        version: 'Version',
-        year: 1234,
+        year: '1234',
+        type: 'carro',
       }),
     );
 
@@ -44,16 +44,16 @@ describe ('CreateCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     await expect(createCar.execute({
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     })).rejects.toBeInstanceOf(AppError);
   });
 });

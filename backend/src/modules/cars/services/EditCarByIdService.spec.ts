@@ -22,8 +22,8 @@ describe ('EditCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model One',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     const editedCar = await editCarById.execute({
@@ -31,8 +31,8 @@ describe ('EditCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model Two',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     expect(editedCar).toEqual(
@@ -40,8 +40,8 @@ describe ('EditCar', () => {
         license_plate: 'AAA0000',
         brand: 'Brand',
         model: 'Model Two',
-        version: 'Version',
-        year: 1234,
+        year: '1234',
+        type: 'carro',
       }),
     );
 
@@ -55,8 +55,8 @@ describe ('EditCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     const editedCar = await editCarById.execute({
@@ -64,8 +64,8 @@ describe ('EditCar', () => {
       license_plate: 'BBB0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     expect(editedCar).toEqual(
@@ -73,8 +73,8 @@ describe ('EditCar', () => {
         license_plate: 'BBB0000',
         brand: 'Brand',
         model: 'Model',
-        version: 'Version',
-        year: 1234,
+        year: '1234',
+        type: 'carro',
       }),
     );
 
@@ -89,8 +89,8 @@ describe ('EditCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     })).rejects.toBeInstanceOf(AppError);
   });
 
@@ -99,16 +99,16 @@ describe ('EditCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     const car = await fakeCarsRepository.create({
       license_plate: 'BBB0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     await expect(editCarById.execute({
@@ -116,8 +116,8 @@ describe ('EditCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     })).rejects.toBeInstanceOf(AppError);
   });
 });

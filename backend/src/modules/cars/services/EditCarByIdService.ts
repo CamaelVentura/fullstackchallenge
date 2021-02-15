@@ -10,8 +10,8 @@ interface IRequest {
   license_plate: string;
   brand: string;
   model: string;
-  version: string; 
-  year: number;
+  year: string; 
+  type: string;
 }
 
 @injectable()
@@ -21,7 +21,7 @@ class EditCarByIdService {
     private carsRepository: ICarsRepository,
   ) {}
 
-  public async execute({id, license_plate, brand, model, version, year}: IRequest): Promise<Car>{
+  public async execute({id, license_plate, brand, model, year, type}: IRequest): Promise<Car>{
     const car = await this.carsRepository.findById(id);
 
     if(!car){
@@ -40,8 +40,8 @@ class EditCarByIdService {
       license_plate,
       brand,
       model,
-      version,
       year,
+      type,
     });
 
     return editedCar;

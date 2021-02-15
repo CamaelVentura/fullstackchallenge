@@ -20,16 +20,16 @@ describe ('ListCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     const secondCar = await fakeCarsRepository.create({
       license_plate: 'BBB0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      type: 'carro',
     });
 
     const cars = await listCars.execute();

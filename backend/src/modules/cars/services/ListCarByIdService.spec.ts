@@ -22,8 +22,8 @@ describe ('ListCar', () => {
       license_plate: 'AAA0000',
       brand: 'Brand',
       model: 'Model',
-      version: 'Version',
-      year: 1234,
+      year: '1234',
+      price: 1000,
     });
 
     const findCar = await listCarById.execute({id: car.id});
@@ -34,8 +34,8 @@ describe ('ListCar', () => {
         license_plate: 'AAA0000',
         brand: 'Brand',
         model: 'Model',
-        version: 'Version',
-        year: 1234,
+        year: '1234',
+        price: 1000,
       }),
     );
   });

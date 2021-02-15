@@ -27,12 +27,12 @@ export default class CreateCars1613166571043 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
-                        name: 'version',
+                        name: 'year',
                         type: 'varchar',
                     },
                     {
-                        name: 'year',
-                        type: 'int',
+                      name: 'type',
+                      type: 'varchar',
                     },
                     {
                         name: 'created_at',

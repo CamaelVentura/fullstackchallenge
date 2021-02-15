@@ -9,7 +9,7 @@ import ListCarsService from '../../../services/ListCarsService';
 
 export default class CarsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { license_plate, brand, model, version, year } = request.body;
+    const { license_plate, brand, model, year, type } = request.body;
     
     const createCar = container.resolve(CreateCarService);
 
@@ -17,8 +17,8 @@ export default class CarsController {
       license_plate,
       brand,
       model,
-      version,
-      year
+      year,
+      type,
     });
 
     return response.json(car);
@@ -54,7 +54,7 @@ export default class CarsController {
 
   public async update(request: Request, response: Response): Promise<Response>{
     const { id } = request.params;
-    const { license_plate, brand, model, version, year } = request.body;
+    const { license_plate, brand, model, year, type } = request.body;
 
     const editCarById = container.resolve(EditCarByIdService);
 
@@ -63,8 +63,8 @@ export default class CarsController {
       license_plate,
       brand,
       model,
-      version,
       year,
+      type,
     });
 
     return response.json(car);

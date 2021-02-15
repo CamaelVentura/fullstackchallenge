@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.use((err: Error, request: Request, response: Response, next: Function) => {
+/* app.use((err: Error, request: Request, response: Response, next: Function) => {
   if(err instanceof AppError){
     return response.status(err.statusCode).json({
       status: 'error',
@@ -28,7 +28,7 @@ app.use((err: Error, request: Request, response: Response, next: Function) => {
     status: 'error',
     message: 'Internal server error',
   });
-});
+}); */
 
 const port = process.env.API_PORT;
 
