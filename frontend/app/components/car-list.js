@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 import axios from 'axios';
 
-export default class CarListComponent extends Component {
+export default class VehicleListComponent extends Component {
     @service router;
     @tracked filteredVehicles;
     vehicles;
@@ -18,7 +18,7 @@ export default class CarListComponent extends Component {
 
     @action
     filter(filtro){
-        if(filtro === ''){
+        if(filtro === '' && this.vehicles){
             this.filteredVehicles = this.vehicles;
         }
         else{
@@ -32,30 +32,30 @@ export default class CarListComponent extends Component {
     }
 
     @action
-    goToCar(car){
-        this.router.transitionTo(`/${car.id}`);
+    goToVehicle(vehicle){
+        this.router.transitionTo(`/${vehicle.id}`);
     }
 
     @action
-    goToEditCar(car){
-        this.router.transitionTo(`/edit/${car.id}`);
+    goToEditVehicle(vehicle){
+        this.router.transitionTo(`/edit/${vehicle.id}`);
     }
 
     @action
-    goToNewCar(){
+    goToNewVehicle(){
         this.router.transitionTo('/new');
     }
 
     @action
-    deleteCar(car){
-        const confirmDelete = confirm(`Deletar ${car.license_plate}?`);
+    deleteVehicle(vehicle){
+        const confirmDelete = confirm(`Deletar ${vehicle.license_plate}?`);
         if(confirmDelete){
-            this.delete(car.id);
+            this.delete(vehicle.id);
         }
     }
 
     async delete(id){
-        await axios.delete(`http://localhost:3000/cars/${id}`);
+        await axios.delete(`http://localhost:3000/vehicles/${id}`);
         window.location.reload(true);
     }
 }

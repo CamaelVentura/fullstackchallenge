@@ -4,8 +4,9 @@ import axios from 'axios';
 export default class EditRoute extends Route {
   async model(car){
 
-    const {data} = await axios.get(`http://localhost:3000/cars/${car.vehicle_id}`);
+    const {data} = await axios.get(`http://localhost:3000/vehicles/${car.vehicle_id}`);
 
+    console.log(data);
     return data;
   }
 }

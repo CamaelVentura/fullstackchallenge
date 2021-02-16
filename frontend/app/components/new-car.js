@@ -79,7 +79,7 @@ export default class NewCarComponent extends Component {
     }
 
     try{
-      await axios.post('http://localhost:3000/cars', {
+      await axios.post('http://localhost:3000/vehicles', {
         license_plate: license_plate.value,
         type: type.options[type.selectedIndex].text,
         brand: brand.options[brand.selectedIndex].text,

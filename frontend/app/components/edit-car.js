@@ -13,11 +13,11 @@ export default class EditCarComponent extends Component {
   @tracked years = [{codigo: -1, nome: 'Carregando...'}];
 
   @action
-  async loadValues(car){
-    const index = this.types.indexOf(this.types.find(type => type.nome === car.type));
+  async loadValues(vehicle){
+    const index = this.types.indexOf(this.types.find(type => type.nome === vehicle.type));
 
     let type = '';
-    switch(car.type){
+    switch(vehicle.type){
       case 'Caminhão':
         type = 'caminhoes';
       break;
@@ -36,13 +36,13 @@ export default class EditCarComponent extends Component {
 
     this.brands = (await axios.get(`https://parallelum.com.br/fipe/api/v1/${type}/marcas`)).data;
 
-    const itemBrand = this.brands.find(brand => brand.nome === car.brand);    
+    const itemBrand = this.brands.find(brand => brand.nome === vehicle.brand);    
     setTimeout(() => { document.getElementById('brand').selectedIndex = this.brands.indexOf(itemBrand); }, 1);
     this.models = (
       await axios.get(`https://parallelum.com.br/fipe/api/v1/${type}/marcas/${itemBrand.codigo}/modelos`)
     ).data.modelos;
 
-    const itemModel = this.models.find(model => model.nome === car.model);
+    const itemModel = this.models.find(model => model.nome === vehicle.model);
     setTimeout(() => { document.getElementById('model').selectedIndex = this.models.indexOf(itemModel); }, 1);
 
     this.years = (
@@ -50,7 +50,7 @@ export default class EditCarComponent extends Component {
         `https://parallelum.com.br/fipe/api/v1//${type}/marcas/${itemBrand.codigo}/modelos/${itemModel.codigo}/anos`
       )).data;
     
-    const itemYear = this.years.find(year => year.nome === car.year);
+    const itemYear = this.years.find(year => year.nome === vehicle.year);
     setTimeout(() => { document.getElementById('year').selectedIndex = this.years.indexOf(itemYear); }, 1);
   }
 
@@ -94,7 +94,7 @@ export default class EditCarComponent extends Component {
   }
 
   @action 
-  async submitVehicle(car){
+  async submitVehicle(vehicle){
     const type = document.getElementById('type');
     const license_plate = document.getElementById('license_plate');
     const brand = document.getElementById('brand');
@@ -122,7 +122,7 @@ export default class EditCarComponent extends Component {
     }
 
     try{
-      await axios.put(`http://localhost:3000/cars/${car.id}`, {
+      await axios.put(`http://localhost:3000/vehicles/${vehicle.id}`, {
         license_plate: license_plate.value,
         brand: brand.options[brand.selectedIndex].text,
         model: model.options[model.selectedIndex].text,
