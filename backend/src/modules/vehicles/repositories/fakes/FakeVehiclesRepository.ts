@@ -18,9 +18,9 @@ export default class VehiclesRepository implements IVehiclesRepository {
 
     const vehicle = new Vehicle();
 
-    Object.assign(Vehicle, { id: uuid(), ...data})
-
-    this.vehicles.push(vehicle)
+    Object.assign(vehicle, { id: uuid(), ...data});
+    
+    this.vehicles.push(vehicle);
 
     return vehicle;
   }

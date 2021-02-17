@@ -23,7 +23,7 @@ describe ('ListVehicle', () => {
       brand: 'Brand',
       model: 'Model',
       year: '1234',
-      type: 'carro,'
+      type: 'carro',
     });
 
     const findVehicle = await listVehicleById.execute({id: vehicle.id});
